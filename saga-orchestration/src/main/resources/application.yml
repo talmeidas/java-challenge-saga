@@ -1,0 +1,66 @@
+server:
+  http2:
+    enabled: true
+  port: 8000
+  error:
+    whitelabel:
+      enabled: true
+
+spring:
+  application:
+    name: "@project.name@"
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+    add-properties: true
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: null
+    driver-class-name: org.h2.Driver
+  jpa:
+    open-in-view: false
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  data:
+    rest:
+      detection-strategy: annotated
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+  sql:
+    init:
+      encoding: UTF-8
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+
+app:
+  detran-driver-license:
+    url: http://localhost:8010
+  motor-company-automobile:
+    url: http://localhost:8020
+  rental-company-booking:
+    url: http://localhost:8030
+  rental-company-contract:
+    url: http://localhost:8040
+  rental-company-support:
+    url: http://localhost:8050
+  security-company-contract:
+    url: http://localhost:8060
+  security-company-insurance:
+    url: http://localhost:8070
