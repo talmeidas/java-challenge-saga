@@ -26,14 +26,14 @@ public class DriverLicenseService {
     private final DriverLicenseMapper mapper;
     private final DriverLicenseRepository repository;
 
-    public DriverLicenseResponseDTO getDriverLicenseStatusByCnh(String cnh) {
-        log.info("Getting driver license status by CNH - {}", cnh);
+    public DriverLicenseResponseDTO getDriverLicenseStatusByCnhNumber(String cnhNumber) {
+        log.info("Getting driver license status by CNH number - {}", cnhNumber);
 
-        if (!Validate.cnh(cnh)) {
+        if (!Validate.cnh(cnhNumber)) {
             throw new IllegalArgumentException("exception.illegal.argument.cnh");
         }
 
-        var driverLicenseOptional = repository.findById(cnh);
+        var driverLicenseOptional = repository.findById(cnhNumber);
         var entity = driverLicenseOptional
                 .orElseThrow(() -> new EntityNotFoundException("exception.unexpected.not.found"));
 

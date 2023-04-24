@@ -21,10 +21,10 @@ public class DriverLicenseController {
     private final DriverLicenseService service;
 
     @LogExecutionTime
-    @Operation(summary = "Get a driver license status by CNH")
-    @GetMapping("/{cnh}")
-    public ResponseEntity<DriverLicenseResponseDTO> getDriverLicenseStatusByCnh(@PathVariable("cnh") final String cnh) {
-        final DriverLicenseResponseDTO response = service.getDriverLicenseStatusByCnh(cnh);
+    @Operation(summary = "Get a driver license status by CNH number")
+    @GetMapping("/{cnhNumber}")
+    public ResponseEntity<DriverLicenseResponseDTO> getDriverLicenseStatusByCnhNumber(@PathVariable("cnhNumber") final String cnhNumber) {
+        final DriverLicenseResponseDTO response = service.getDriverLicenseStatusByCnhNumber(cnhNumber);
 
         return ResponseEntity.ok(response);
     }

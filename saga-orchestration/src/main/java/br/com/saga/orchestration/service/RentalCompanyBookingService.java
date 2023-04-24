@@ -24,8 +24,8 @@ public class RentalCompanyBookingService {
         return repository.getBookingById(id);
     }
 
-    public List<BookingResponseDTO> getBookingByCnh(String cnh) {
-        return repository.getBookingByCnh(cnh);
+    public List<BookingResponseDTO> getBookingByCnhNumber(String cnhNumber) {
+        return repository.getBookingByCnhNumber(cnhNumber);
     }
 
     public BookingResponseDTO saveBooking(@Valid BookingRequestDTO request) {

@@ -21,7 +21,7 @@ import java.util.Date;
 public class DriverLicenseResponseDTO {
     private String name;
     private String cpf;
-    private String cnh;
+    private String cnhNumber;
     private Date birthDate;
     private Date expirationDate;
     private Date issueDate;

@@ -22,8 +22,8 @@ public interface RentalCompanyBookingRepository {
     @GetMapping("/v1/booking/{id}")
     BookingResponseDTO getBookingById(@PathVariable("id") final Integer id);
 
-    @GetMapping("/v1/booking/customer/{cnh}")
-    List<BookingResponseDTO> getBookingByCnh(@PathVariable("cnh") final String cnh);
+    @GetMapping("/v1/booking/customer/{cnhNumber}")
+    List<BookingResponseDTO> getBookingByCnhNumber(@PathVariable("cnhNumber") final String cnhNumber);
 
     @PostMapping("/v1/booking")
     BookingResponseDTO saveBooking(@RequestBody final BookingRequestDTO request);

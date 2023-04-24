@@ -30,7 +30,7 @@ public class CustomerSupport {
     private String cpf;
 
     @Column(nullable = false)
-    private String cnh;
+    private String cnhNumber;
 
     @Column(nullable = false)
     private Date birthDate;

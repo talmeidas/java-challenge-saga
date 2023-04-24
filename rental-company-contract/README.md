@@ -202,17 +202,7 @@ Status Code: 200
 Status Description: OK
 Body: {
   "id": 0,
-  "name": "string",
-  "cpf": "string",
-  "cnh": "string",
-  "birthDate": "2023-01-01T00:00:00.000Z",
-  "email": "string",
-  "phone": "string",
-  "automobileId": 0,
-  "insuranceTypeId": 0,
-  "addressId": 0,
-  "customerId": 0,
-  "contractPeriod": 0,
+  "bookingId": 0,
   "status": "string",
   "created": "2023-01-01T00:00:00.000Z",
   "updated": "2023-01-01T00:00:00.000Z"

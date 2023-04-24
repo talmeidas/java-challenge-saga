@@ -29,7 +29,7 @@ public class DriverLicenseRequestDTO {
 
     @NotNull
     @Size(min = 11, max = 11, message = "Should have 11 characters")
-    private String cnh;
+    private String cnhNumber;
 
     @NotNull
     private Date birthDate;

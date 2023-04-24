@@ -55,7 +55,7 @@ HttpResponseStatusDTO {
 DriverLicenseResponseDTO {
   nome            string
   cpf             string
-  cnh             string
+  cnhNumber       string
   birthDate       string($date-time)
   expirationDate  string($date-time)
   issueDate       string($date-time)
@@ -78,7 +78,7 @@ Request
 ```yaml
 Protocol: HTTP/1.1
 Host: localhost:8010
-Path: /v1/driver-license/{cnh}
+Path: /v1/driver-license/{cnhNumber}
 Method: GET
 Headers:
   Accept: application/json
@@ -95,7 +95,7 @@ Body:
   {
     "nome": "string",
     "cpf": "string",
-    "cnh": "string",
+    "cnhNumber": "string",
     "birthDate": "2023-01-01T00:00:00.000Z",
     "expirationDate": "2023-01-01T00:00:00.000Z",
     "issueDate": "2023-01-01T00:00:00.000Z",

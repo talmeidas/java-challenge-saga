@@ -42,14 +42,14 @@ public class BookingService {
         return mapper.toResponse(entity);
     }
 
-    public List<BookingResponseDTO> getBookingByCnh(String cnh) {
-        log.info("Getting booking cnh - {}", cnh);
+    public List<BookingResponseDTO> getBookingByCnhNumber(String cnhNumber) {
+        log.info("Getting booking CNH number - {}", cnhNumber);
 
-        if (!Validate.cnh(cnh)) {
+        if (!Validate.cnh(cnhNumber)) {
             throw new IllegalArgumentException("exception.illegal.argument.cnh");
         }
 
-        var listOfEntities = repository.findBookingByCnh(cnh);
+        var listOfEntities = repository.findBookingByCnhNumber(cnhNumber);
 
         if (listOfEntities.isEmpty()) {
             throw new EntityNotFoundException("exception.unexpected.not.found");
@@ -62,7 +62,7 @@ public class BookingService {
     public BookingResponseDTO saveBooking(@Valid BookingRequestDTO request) {
         Objects.requireNonNull(request, "request must not be null");
 
-        if (!Validate.cnh(request.getCnh())) {
+        if (!Validate.cnh(request.getCnhNumber())) {
             throw new IllegalArgumentException("exception.illegal.argument.cnh");
         }
 
@@ -88,7 +88,7 @@ public class BookingService {
 
         booking.setName(request.getName());
         booking.setCpf(request.getCpf());
-        booking.setCnh(request.getCnh());
+        booking.setCnhNumber(request.getCnhNumber());
         booking.setBirthDate(request.getBirthDate());
         booking.setEmail(request.getEmail());
         booking.setPhone(request.getPhone());

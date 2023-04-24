@@ -19,7 +19,7 @@ public class CustomerSupportResponseDTO {
     private Integer id;
     private String name;
     private String cpf;
-    private String cnh;
+    private String cnhNumber;
     private Date birthDate;
     private String email;
     private String phone;

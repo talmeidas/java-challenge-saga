@@ -57,7 +57,7 @@ CustomerSupportRequestDTO {
                   maxLength: 2147483647
                   minLength: 3
   cpf*            string
-  cnh*            string
+  cnhNumber*      string
                   maxLength: 11
                   minLength: 11
   birthDate*      string($date-time)
@@ -81,7 +81,7 @@ CustomerSupportResponseDTO {
                   maxLength: 2147483647
                   minLength: 3
   cpf             string
-  cnh             string
+  cnhNumber       string
                   maxLength: 11
                   minLength: 11
   birthDate       string($date-time)
@@ -141,7 +141,7 @@ Body: [
     "id": 0,
     "name": "string",
     "cpf": "string",
-    "cnh": "string",
+    "cnhNumber": "string",
     "birthDate": "2023-01-01T00:00:00.000Z",
     "email": "string",
     "phone": "string",
@@ -178,7 +178,7 @@ Body: {
   "id": 0,
   "name": "string",
   "cpf": "string",
-  "cnh": "string",
+  "cnhNumber": "string",
   "birthDate": "2023-01-01T00:00:00.000Z",
   "email": "string",
   "phone": "string",
@@ -193,12 +193,12 @@ Body: {
 ```
 <br>
 
-### 3. Get a customer support by cnh
+### 3. Get a customer support by CNH number
 Request
 ```yaml
 Protocol: HTTP/1.1
 Host: localhost:8050
-Path: /v1/customer-support/customer/{cnh}
+Path: /v1/customer-support/customer/{cnhNumber}
 Method: GET
 Headers:
   Accept: application/json
@@ -215,7 +215,7 @@ Body: [
     "id": 0,
     "name": "string",
     "cpf": "string",
-    "cnh": "string",
+    "cnhNumber": "string",
     "birthDate": "2023-01-01T00:00:00.000Z",
     "email": "string",
     "phone": "string",
@@ -245,7 +245,7 @@ Headers:
 Body: {
   "name": "string",
   "cpf": "string",
-  "cnh": "string",
+  "cnhNumber": "string",
   "birthDate": "2023-01-01T00:00:00.000Z",
   "email": "string",
   "phone": "string",
@@ -263,7 +263,7 @@ Body: {
   "id": 0,
   "name": "string",
   "cpf": "string",
-  "cnh": "string",
+  "cnhNumber": "string",
   "birthDate": "2023-01-01T00:00:00.000Z",
   "email": "string",
   "phone": "string",
@@ -299,7 +299,7 @@ Body: {
   "id": 0,
   "name": "string",
   "cpf": "string",
-  "cnh": "string",
+  "cnhNumber": "string",
   "birthDate": "2023-01-01T00:00:00.000Z",
   "email": "string",
   "phone": "string",

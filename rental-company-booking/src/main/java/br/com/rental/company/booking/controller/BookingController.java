@@ -42,11 +42,11 @@ public class BookingController {
     }
 
     @LogExecutionTime
-    @Operation(summary = "Get a booking by cnh")
-    @GetMapping("/customer/{cnh}")
-    public ResponseEntity<List<BookingResponseDTO>> getBookingByCnh(
-            @PathVariable("cnh") final String cnh) {
-        final List<BookingResponseDTO> response = service.getBookingByCnh(cnh);
+    @Operation(summary = "Get a booking by CNH number")
+    @GetMapping("/customer/{cnhNumber}")
+    public ResponseEntity<List<BookingResponseDTO>> getBookingByCnhNumber(
+            @PathVariable("cnhNumber") final String cnhNumber) {
+        final List<BookingResponseDTO> response = service.getBookingByCnhNumber(cnhNumber);
 
         return ResponseEntity.ok(response);
     }

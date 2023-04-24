@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface CustomerSupportRepository extends JpaRepository<CustomerSupport, Integer> {
-    List<CustomerSupport> findScheduleByCnh(final String cnh);
+    List<CustomerSupport> findScheduleByCnhNumber(final String cnhNumber);
 }

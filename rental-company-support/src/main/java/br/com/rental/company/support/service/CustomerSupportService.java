@@ -43,14 +43,14 @@ public class CustomerSupportService {
         return mapper.toResponse(entity);
     }
 
-    public List<CustomerSupportResponseDTO> getScheduleByCnh(String cnh) {
-        log.info("Getting schedule by cnh - {}", cnh);
+    public List<CustomerSupportResponseDTO> getScheduleByCnhNumber(String cnhNumber) {
+        log.info("Getting schedule by CNH number - {}", cnhNumber);
 
-        if (!Validate.cnh(cnh)) {
+        if (!Validate.cnh(cnhNumber)) {
             throw new IllegalArgumentException("exception.illegal.argument.cnh");
         }
 
-        var listOfEntities = repository.findScheduleByCnh(cnh);
+        var listOfEntities = repository.findScheduleByCnhNumber(cnhNumber);
 
         if (listOfEntities.isEmpty()) {
             throw new EntityNotFoundException("exception.unexpected.not.found");
@@ -63,7 +63,7 @@ public class CustomerSupportService {
     public CustomerSupportResponseDTO saveSchedule(@Valid CustomerSupportRequestDTO request) {
         Objects.requireNonNull(request, "request must not be null");
 
-        if (!Validate.cnh(request.getCnh())) {
+        if (!Validate.cnh(request.getCnhNumber())) {
             throw new IllegalArgumentException("exception.illegal.argument.cnh");
         }
 

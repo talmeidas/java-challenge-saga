@@ -19,8 +19,8 @@ import java.util.Date;
 @Table(name = "DRIVER_LICENSE")
 public class DriverLicense {
     @Id
-    @Column(name = "cnh")
-    private String cnh;
+    @Column(name = "cnhNumber")
+    private String cnhNumber;
 
     @Column(nullable = false)
     private String name;

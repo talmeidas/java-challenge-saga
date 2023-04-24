@@ -42,11 +42,11 @@ public class CustomerSupportController {
     }
 
     @LogExecutionTime
-    @Operation(summary = "Get a customer support by cnh")
-    @GetMapping("/customer/{cnh}")
-    public ResponseEntity<List<CustomerSupportResponseDTO>> getScheduleByCnh(
-            @PathVariable("cnh") final String cnh) {
-        final List<CustomerSupportResponseDTO> response = service.getScheduleByCnh(cnh);
+    @Operation(summary = "Get a customer support by CNH number")
+    @GetMapping("/customer/{cnhNumber}")
+    public ResponseEntity<List<CustomerSupportResponseDTO>> getScheduleByCnhNumber(
+            @PathVariable("cnhNumber") final String cnhNumber) {
+        final List<CustomerSupportResponseDTO> response = service.getScheduleByCnhNumber(cnhNumber);
 
         return ResponseEntity.ok(response);
     }
