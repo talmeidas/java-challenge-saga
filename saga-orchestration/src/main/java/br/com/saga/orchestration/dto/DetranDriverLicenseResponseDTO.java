@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
@@ -15,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties
-public class DetranDriverLicenseResponseDTO {
+public class DetranDriverLicenseResponseDTO implements Serializable {
     private String name;
     private String cpf;
     private String cnhNumber;

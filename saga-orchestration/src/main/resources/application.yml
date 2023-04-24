@@ -40,6 +40,14 @@ spring:
   sql:
     init:
       encoding: UTF-8
+  redis:
+    host: us1-guiding-dragon-38410.upstash.io
+    port: 38410
+    username: default
+    password: 6b8d3f57389c4e83a2077328ed004cdf
+    ssl: false
+  cache:
+    type: redis
 
 springdoc:
   swagger-ui:
@@ -48,6 +56,10 @@ springdoc:
   api-docs:
     path: /v3/api-docs
 
+#resolved:
+#  cache:
+#    enabled: true
+#    ttl: 60
 
 app:
   detran-driver-license:

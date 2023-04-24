@@ -6,7 +6,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.redis.core.RedisHash;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
@@ -14,7 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties
-public class MotorCompanyAutomobileResponseDTO {
+public class MotorCompanyAutomobileResponseDTO implements Serializable {
     private Integer id;
     private MotorCompanyBrand brand;
     private String model;

@@ -12,6 +12,7 @@ import br.com.motor.company.automobile.service.AutomobileService;
 import lombok.*;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
+import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
 @RequiredArgsConstructor

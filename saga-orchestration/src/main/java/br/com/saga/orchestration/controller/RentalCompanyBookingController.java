@@ -1,8 +1,10 @@
 package br.com.saga.orchestration.controller;
 
 import br.com.saga.orchestration.controller.metric.LogExecutionTime;
+import br.com.saga.orchestration.dto.DetranDriverLicenseResponseDTO;
 import br.com.saga.orchestration.dto.RentalCompanyBookingRequestDTO;
 import br.com.saga.orchestration.dto.RentalCompanyBookingResponseDTO;
+import br.com.saga.orchestration.service.DetranDriverLicenseService;
 import br.com.saga.orchestration.service.RentalCompanyBookingService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -21,13 +23,15 @@ import java.util.List;
 @SecurityRequirement(name = "basicAuth")
 @Slf4j
 public class RentalCompanyBookingController {
-    private final RentalCompanyBookingService service;
+    private final RentalCompanyBookingService rentalCompanyBookingService;
+
+    private final DetranDriverLicenseService detranDriverLicenseService;
 
     @LogExecutionTime
     @Operation(summary = "Get all booking")
     @GetMapping
     public ResponseEntity<List<RentalCompanyBookingResponseDTO>> getAllBooking() {
-        final List<RentalCompanyBookingResponseDTO> response = service.getAllBooking();
+        final List<RentalCompanyBookingResponseDTO> response = rentalCompanyBookingService.getAllBooking();
 
         return ResponseEntity.ok(response);
     }
@@ -36,7 +40,7 @@ public class RentalCompanyBookingController {
     @Operation(summary = "Get a booking by id")
     @GetMapping("/{id}")
     public ResponseEntity<RentalCompanyBookingResponseDTO> getBookingById(@PathVariable("id") final Integer id) {
-        final RentalCompanyBookingResponseDTO response = service.getBookingById(id);
+        final RentalCompanyBookingResponseDTO response = rentalCompanyBookingService.getBookingById(id);
 
         return ResponseEntity.ok(response);
     }
@@ -46,7 +50,7 @@ public class RentalCompanyBookingController {
     @GetMapping("/customer/{cnhNumber}")
     public ResponseEntity<List<RentalCompanyBookingResponseDTO>> getBookingByCnhNumber(
             @PathVariable("cnhNumber") final String cnhNumber) {
-        final List<RentalCompanyBookingResponseDTO> response = service.getBookingByCnhNumber(cnhNumber);
+        final List<RentalCompanyBookingResponseDTO> response = rentalCompanyBookingService.getBookingByCnhNumber(cnhNumber);
 
         return ResponseEntity.ok(response);
     }
@@ -55,16 +59,18 @@ public class RentalCompanyBookingController {
     @Operation(summary = "Create a booking")
     @PostMapping
     public ResponseEntity<RentalCompanyBookingResponseDTO> saveBooking(@RequestBody final RentalCompanyBookingRequestDTO request) {
-        final RentalCompanyBookingResponseDTO response = service.saveBooking(request);
+        final DetranDriverLicenseResponseDTO detranDriverLicenseResponse = detranDriverLicenseService.getDriverLicenseStatusByCnhNumber(request.getCnhNumber());
 
-        return ResponseEntity.ok(response);
+        final RentalCompanyBookingResponseDTO rentalCompanyBookingResponse = rentalCompanyBookingService.saveBooking(request);
+
+        return ResponseEntity.ok(rentalCompanyBookingResponse);
     }
 
     @LogExecutionTime
     @Operation(summary = "Update a booking")
     @PutMapping("/{id}")
     public ResponseEntity<RentalCompanyBookingResponseDTO> updateBooking(@PathVariable("id") final Integer id, @RequestBody final RentalCompanyBookingRequestDTO request) {
-        final RentalCompanyBookingResponseDTO response = service.updateBooking(id, request);
+        final RentalCompanyBookingResponseDTO response = rentalCompanyBookingService.updateBooking(id, request);
 
         return ResponseEntity.ok(response);
     }
@@ -73,7 +79,7 @@ public class RentalCompanyBookingController {
     @Operation(summary = "Cancel a booking by id")
     @DeleteMapping("/{id}")
     public ResponseEntity<RentalCompanyBookingResponseDTO> cancelBookingById(@PathVariable("id") final Integer id) {
-        final RentalCompanyBookingResponseDTO response = service.cancelBookingById(id);
+        final RentalCompanyBookingResponseDTO response = rentalCompanyBookingService.cancelBookingById(id);
 
         return ResponseEntity.ok(response);
     }

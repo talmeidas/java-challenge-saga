@@ -9,6 +9,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
@@ -16,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties
-public class MotorCompanyAutomobileDetailResponseDTO {
+public class MotorCompanyAutomobileDetailResponseDTO implements Serializable {
     private Integer id;
     private String licensePlateNumber;
     private MotorCompanyVehicleType vehicleType;

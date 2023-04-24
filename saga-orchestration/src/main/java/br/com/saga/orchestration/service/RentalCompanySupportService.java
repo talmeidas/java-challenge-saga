@@ -4,8 +4,10 @@ import br.com.saga.orchestration.dto.RentalCompanySupportAddressResponseDTO;
 import br.com.saga.orchestration.dto.RentalCompanySupportCustomerRequestDTO;
 import br.com.saga.orchestration.dto.RentalCompanySupportCustomerResponseDTO;
 import br.com.saga.orchestration.repository.RentalCompanySupportRepository;
+import br.com.saga.orchestration.utils.CacheTimeDuration;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import javax.validation.Valid;
@@ -37,6 +39,7 @@ public class RentalCompanySupportService {
         return repository.cancelScheduleById(id);
     }
 
+    @Cacheable(cacheNames = CacheTimeDuration.WEEK, key="'RentalCompanySupportService_' + #root.method.name")
     public List<RentalCompanySupportAddressResponseDTO> getAllAddress() {
         return repository.getAllAddress();
     }

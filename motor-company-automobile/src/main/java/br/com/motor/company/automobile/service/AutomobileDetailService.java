@@ -27,7 +27,6 @@ public class AutomobileDetailService {
     private final AutomobileDetailMapper mapper;
     private final AutomobileDetailRepository repository;
 
-    @Cacheable(value = "itemCache")
     public AutomobileDetailResponseDTO findDetailByAutomobileId(Integer id) {
         log.info("Getting automobile's details by id - {}", id);
 

@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class HttpResponseStatusDTO implements Serializable {
@@ -17,7 +19,7 @@ public class HttpResponseStatusDTO implements Serializable {
     private LocalDateTime timestamp;
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
-    private long status;
+    private int status;
 
     private String error;
 

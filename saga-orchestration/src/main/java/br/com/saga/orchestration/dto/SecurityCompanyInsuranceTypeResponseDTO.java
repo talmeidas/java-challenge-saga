@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
@@ -13,7 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonIgnoreProperties
-public class SecurityCompanyInsuranceTypeResponseDTO {
+public class SecurityCompanyInsuranceTypeResponseDTO implements Serializable {
     private Integer id;
     private String name;
     private String describe;
