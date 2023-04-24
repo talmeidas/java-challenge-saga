@@ -1,7 +1,7 @@
 package br.com.saga.orchestration.service;
 
-import br.com.saga.orchestration.dto.rental.company.ContractRequestDTO;
-import br.com.saga.orchestration.dto.rental.company.ContractResponseDTO;
+import br.com.saga.orchestration.dto.RentalCompanyContractRequestDTO;
+import br.com.saga.orchestration.dto.RentalCompanyContractResponseDTO;
 import br.com.saga.orchestration.repository.RentalCompanyContractRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,23 +16,23 @@ import java.util.List;
 public class RentalCompanyContractService {
     private final RentalCompanyContractRepository repository;
 
-    public List<ContractResponseDTO> getAllContract() {
+    public List<RentalCompanyContractResponseDTO> getAllContract() {
         return repository.getAllContract();
     }
 
-    public ContractResponseDTO getContractById(Integer id) {
+    public RentalCompanyContractResponseDTO getContractById(Integer id) {
         return repository.getContractById(id);
     }
 
-    public ContractResponseDTO getContractByBookingId(Integer bookingId) {
+    public RentalCompanyContractResponseDTO getContractByBookingId(Integer bookingId) {
         return repository.getContractByBookingId(bookingId);
     }
 
-    public ContractResponseDTO saveContract(@Valid ContractRequestDTO request) {
+    public RentalCompanyContractResponseDTO saveContract(@Valid RentalCompanyContractRequestDTO request) {
         return repository.saveContract(request);
     }
 
-    public ContractResponseDTO cancelContractById(Integer id) {
+    public RentalCompanyContractResponseDTO cancelContractById(Integer id) {
         return repository.cancelContractById(id);
     }
 }

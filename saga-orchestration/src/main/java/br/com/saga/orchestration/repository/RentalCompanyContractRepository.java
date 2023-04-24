@@ -1,8 +1,8 @@
 package br.com.saga.orchestration.repository;
 
 import br.com.saga.orchestration.configuration.FeignClientConfiguration;
-import br.com.saga.orchestration.dto.rental.company.ContractRequestDTO;
-import br.com.saga.orchestration.dto.rental.company.ContractResponseDTO;
+import br.com.saga.orchestration.dto.RentalCompanyContractRequestDTO;
+import br.com.saga.orchestration.dto.RentalCompanyContractResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,17 +17,17 @@ import java.util.List;
 public interface RentalCompanyContractRepository {
 
     @GetMapping("/v1/contract")
-    List<ContractResponseDTO> getAllContract();
+    List<RentalCompanyContractResponseDTO> getAllContract();
 
     @GetMapping("/v1/contract/{id}")
-    ContractResponseDTO getContractById(@PathVariable("id") final Integer id);
+    RentalCompanyContractResponseDTO getContractById(@PathVariable("id") final Integer id);
 
     @GetMapping("/v1/contract/booking/{bookingId}")
-    ContractResponseDTO getContractByBookingId(@PathVariable("bookingId") final Integer bookingId);
+    RentalCompanyContractResponseDTO getContractByBookingId(@PathVariable("bookingId") final Integer bookingId);
 
     @PostMapping("/v1/contract")
-    ContractResponseDTO saveContract(@RequestBody final ContractRequestDTO request);
+    RentalCompanyContractResponseDTO saveContract(@RequestBody final RentalCompanyContractRequestDTO request);
 
     @DeleteMapping("/v1/contract/{id}")
-    ContractResponseDTO cancelContractById(@PathVariable("id") final Integer id);
+    RentalCompanyContractResponseDTO cancelContractById(@PathVariable("id") final Integer id);
 }

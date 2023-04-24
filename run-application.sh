@@ -37,3 +37,16 @@ echo
 echo Install and Run - Saga Orchestration
 mvn clean install -Dmaven.test.skip=true -f ./saga-orchestration
 mvn spring-boot:run -Dspring.profiles.active=default -f ./saga-orchestration &
+
+sleep 10
+echo
+echo Swagger Applications
+echo Saga Orchestration\\t\\t        -\> http://localhost:8000/swagger-ui/index.html
+echo Detran Driver License\\t\\t     -\> http://localhost:8010/swagger-ui/index.html
+echo Motor Company Automobile\\t     -\> http://localhost:8020/swagger-ui/index.html
+echo Rental Company Booking\\t\\t    -\> http://localhost:8030/swagger-ui/index.html
+echo Rental Company Contrac\\t\\t    -\> http://localhost:8040/swagger-ui/index.html
+echo Rental Company Support\\t\\t    -\> http://localhost:8050/swagger-ui/index.html
+echo Security Company Contract\\t    -\> http://localhost:8060/swagger-ui/index.html
+echo Security Company Insurance\\t   -\> http://localhost:8070/swagger-ui/index.html
+exit

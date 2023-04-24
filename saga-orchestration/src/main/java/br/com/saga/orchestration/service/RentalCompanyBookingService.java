@@ -1,7 +1,7 @@
 package br.com.saga.orchestration.service;
 
-import br.com.saga.orchestration.dto.rental.company.BookingRequestDTO;
-import br.com.saga.orchestration.dto.rental.company.BookingResponseDTO;
+import br.com.saga.orchestration.dto.RentalCompanyBookingRequestDTO;
+import br.com.saga.orchestration.dto.RentalCompanyBookingResponseDTO;
 import br.com.saga.orchestration.repository.RentalCompanyBookingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,27 +16,27 @@ import java.util.List;
 public class RentalCompanyBookingService {
     private final RentalCompanyBookingRepository repository;
 
-    public List<BookingResponseDTO> getAllBooking() {
+    public List<RentalCompanyBookingResponseDTO> getAllBooking() {
         return repository.getAllBooking();
     }
 
-    public BookingResponseDTO getBookingById(Integer id) {
+    public RentalCompanyBookingResponseDTO getBookingById(Integer id) {
         return repository.getBookingById(id);
     }
 
-    public List<BookingResponseDTO> getBookingByCnhNumber(String cnhNumber) {
+    public List<RentalCompanyBookingResponseDTO> getBookingByCnhNumber(String cnhNumber) {
         return repository.getBookingByCnhNumber(cnhNumber);
     }
 
-    public BookingResponseDTO saveBooking(@Valid BookingRequestDTO request) {
+    public RentalCompanyBookingResponseDTO saveBooking(@Valid RentalCompanyBookingRequestDTO request) {
         return repository.saveBooking(request);
     }
 
-    public BookingResponseDTO updateBooking(Integer id, @Valid BookingRequestDTO request) {
+    public RentalCompanyBookingResponseDTO updateBooking(Integer id, @Valid RentalCompanyBookingRequestDTO request) {
         return repository.updateBooking(id, request);
     }
 
-    public BookingResponseDTO cancelBookingById(Integer id) {
+    public RentalCompanyBookingResponseDTO cancelBookingById(Integer id) {
         return repository.cancelBookingById(id);
     }
 }

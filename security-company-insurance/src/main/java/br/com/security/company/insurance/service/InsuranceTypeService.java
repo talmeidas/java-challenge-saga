@@ -1,11 +1,8 @@
 package br.com.security.company.insurance.service;
 
-import br.com.security.company.insurance.dto.InsuranceItemRequestDTO;
-import br.com.security.company.insurance.dto.InsuranceItemResponseDTO;
 import br.com.security.company.insurance.dto.InsuranceTypeRequestDTO;
 import br.com.security.company.insurance.dto.InsuranceTypeResponseDTO;
 import br.com.security.company.insurance.mapper.InsuranceTypeMapper;
-import br.com.security.company.insurance.model.InsuranceItem;
 import br.com.security.company.insurance.model.InsuranceType;
 import br.com.security.company.insurance.repository.InsuranceTypeRepository;
 import lombok.RequiredArgsConstructor;

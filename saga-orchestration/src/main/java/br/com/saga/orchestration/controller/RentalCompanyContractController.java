@@ -1,8 +1,8 @@
 package br.com.saga.orchestration.controller;
 
 import br.com.saga.orchestration.controller.metric.LogExecutionTime;
-import br.com.saga.orchestration.dto.rental.company.ContractRequestDTO;
-import br.com.saga.orchestration.dto.rental.company.ContractResponseDTO;
+import br.com.saga.orchestration.dto.RentalCompanyContractRequestDTO;
+import br.com.saga.orchestration.dto.RentalCompanyContractResponseDTO;
 import br.com.saga.orchestration.service.RentalCompanyContractService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -16,8 +16,8 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/v1/contract", produces = "application/json")
-@Tag(name = "Contract Controller")
+@RequestMapping(path = "/v1/rental-company/contract", produces = "application/json")
+@Tag(name = "Rental Company Contract Controller")
 @SecurityRequirement(name = "basicAuth")
 @Slf4j
 public class RentalCompanyContractController {
@@ -26,8 +26,8 @@ public class RentalCompanyContractController {
     @LogExecutionTime
     @Operation(summary = "Get all contract")
     @GetMapping
-    public ResponseEntity<List<ContractResponseDTO>> getAllContract() {
-        final List<ContractResponseDTO> response = service.getAllContract();
+    public ResponseEntity<List<RentalCompanyContractResponseDTO>> getAllContract() {
+        final List<RentalCompanyContractResponseDTO> response = service.getAllContract();
 
         return ResponseEntity.ok(response);
     }
@@ -35,8 +35,8 @@ public class RentalCompanyContractController {
     @LogExecutionTime
     @Operation(summary = "Get a contract by id")
     @GetMapping("/{id}")
-    public ResponseEntity<ContractResponseDTO> getContractById(@PathVariable("id") final Integer id) {
-        final ContractResponseDTO response = service.getContractById(id);
+    public ResponseEntity<RentalCompanyContractResponseDTO> getContractById(@PathVariable("id") final Integer id) {
+        final RentalCompanyContractResponseDTO response = service.getContractById(id);
 
         return ResponseEntity.ok(response);
     }
@@ -44,8 +44,8 @@ public class RentalCompanyContractController {
     @LogExecutionTime
     @Operation(summary = "Get a contract by bookingId")
     @GetMapping("/booking/{bookingId}")
-    public ResponseEntity<ContractResponseDTO> getContractByBookingId(@PathVariable("bookingId") final Integer bookingId) {
-        final ContractResponseDTO response = service.getContractByBookingId(bookingId);
+    public ResponseEntity<RentalCompanyContractResponseDTO> getContractByBookingId(@PathVariable("bookingId") final Integer bookingId) {
+        final RentalCompanyContractResponseDTO response = service.getContractByBookingId(bookingId);
 
         return ResponseEntity.ok(response);
     }
@@ -53,8 +53,8 @@ public class RentalCompanyContractController {
     @LogExecutionTime
     @Operation(summary = "Create a contract")
     @PostMapping
-    public ResponseEntity<ContractResponseDTO> saveContract(@RequestBody final ContractRequestDTO request) {
-        final ContractResponseDTO response = service.saveContract(request);
+    public ResponseEntity<RentalCompanyContractResponseDTO> saveContract(@RequestBody final RentalCompanyContractRequestDTO request) {
+        final RentalCompanyContractResponseDTO response = service.saveContract(request);
 
         return ResponseEntity.ok(response);
     }
@@ -62,8 +62,8 @@ public class RentalCompanyContractController {
     @LogExecutionTime
     @Operation(summary = "Cancel a contract by id")
     @DeleteMapping("/{id}")
-    public ResponseEntity<ContractResponseDTO> cancelContractById(@PathVariable("id") final Integer id) {
-        final ContractResponseDTO response = service.cancelContractById(id);
+    public ResponseEntity<RentalCompanyContractResponseDTO> cancelContractById(@PathVariable("id") final Integer id) {
+        final RentalCompanyContractResponseDTO response = service.cancelContractById(id);
 
         return ResponseEntity.ok(response);
     }

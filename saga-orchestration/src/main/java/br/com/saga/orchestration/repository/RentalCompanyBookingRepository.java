@@ -1,8 +1,8 @@
 package br.com.saga.orchestration.repository;
 
 import br.com.saga.orchestration.configuration.FeignClientConfiguration;
-import br.com.saga.orchestration.dto.rental.company.BookingRequestDTO;
-import br.com.saga.orchestration.dto.rental.company.BookingResponseDTO;
+import br.com.saga.orchestration.dto.RentalCompanyBookingRequestDTO;
+import br.com.saga.orchestration.dto.RentalCompanyBookingResponseDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,24 +15,23 @@ import java.util.List;
         configuration = FeignClientConfiguration.class
 )
 public interface RentalCompanyBookingRepository {
-
     @GetMapping("/v1/booking")
-    List<BookingResponseDTO> getAllBooking();
+    List<RentalCompanyBookingResponseDTO> getAllBooking();
 
     @GetMapping("/v1/booking/{id}")
-    BookingResponseDTO getBookingById(@PathVariable("id") final Integer id);
+    RentalCompanyBookingResponseDTO getBookingById(@PathVariable("id") final Integer id);
 
     @GetMapping("/v1/booking/customer/{cnhNumber}")
-    List<BookingResponseDTO> getBookingByCnhNumber(@PathVariable("cnhNumber") final String cnhNumber);
+    List<RentalCompanyBookingResponseDTO> getBookingByCnhNumber(@PathVariable("cnhNumber") final String cnhNumber);
 
     @PostMapping("/v1/booking")
-    BookingResponseDTO saveBooking(@RequestBody final BookingRequestDTO request);
+    RentalCompanyBookingResponseDTO saveBooking(@RequestBody final RentalCompanyBookingRequestDTO request);
 
     @PutMapping("/v1/booking/{id}")
-    BookingResponseDTO updateBooking(
+    RentalCompanyBookingResponseDTO updateBooking(
             @PathVariable("id") final Integer id,
-            @RequestBody final BookingRequestDTO request);
+            @RequestBody final RentalCompanyBookingRequestDTO request);
 
     @DeleteMapping("/v1/booking/{id}")
-    BookingResponseDTO cancelBookingById(@PathVariable("id") final Integer id);
+    RentalCompanyBookingResponseDTO cancelBookingById(@PathVariable("id") final Integer id);
 }

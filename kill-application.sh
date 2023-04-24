@@ -1,4 +1,8 @@
 echo
+echo Kill - Saga Orchestration
+kill -9 $(lsof -t -i:8000)
+
+echo
 echo Kill - Detran Driver License
 kill -9 $(lsof -t -i:8010)
 
@@ -25,7 +29,3 @@ kill -9 $(lsof -t -i:8060)
 echo
 echo Kill - Security Company Insurance
 kill -9 $(lsof -t -i:8070)
-
-echo
-echo Kill - Saga Orchestration
-kill -9 $(lsof -t -i:8000)
