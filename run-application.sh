@@ -33,10 +33,10 @@ echo Install and Run - Security Company Insurance
 mvn clean install -Dmaven.test.skip=true -f ./security-company-insurance
 mvn spring-boot:run -Dspring.profiles.active=default -f ./security-company-insurance &
 
-echo
-echo Install and Run - Saga Orchestration
-mvn clean install -Dmaven.test.skip=true -f ./saga-orchestration
-mvn spring-boot:run -Dspring.profiles.active=default -f ./saga-orchestration &
+#echo
+#echo Install and Run - Saga Orchestration
+#mvn clean install -Dmaven.test.skip=true -f ./saga-orchestration
+#mvn spring-boot:run -Dspring.profiles.active=default -f ./saga-orchestration &
 
 sleep 10
 echo

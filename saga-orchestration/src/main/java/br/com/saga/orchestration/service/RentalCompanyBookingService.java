@@ -1,7 +1,9 @@
 package br.com.saga.orchestration.service;
 
+import br.com.saga.orchestration.dto.DetranDriverLicenseResponseDTO;
 import br.com.saga.orchestration.dto.RentalCompanyBookingRequestDTO;
 import br.com.saga.orchestration.dto.RentalCompanyBookingResponseDTO;
+import br.com.saga.orchestration.enumerable.DetranDriverLicenseStatus;
 import br.com.saga.orchestration.repository.RentalCompanyBookingRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,6 +18,8 @@ import java.util.List;
 public class RentalCompanyBookingService {
     private final RentalCompanyBookingRepository repository;
 
+    private final DetranDriverLicenseService detranDriverLicenseService;
+
     public List<RentalCompanyBookingResponseDTO> getAllBooking() {
         return repository.getAllBooking();
     }
@@ -29,6 +33,12 @@ public class RentalCompanyBookingService {
     }
 
     public RentalCompanyBookingResponseDTO saveBooking(@Valid RentalCompanyBookingRequestDTO request) {
+        final DetranDriverLicenseResponseDTO detranDriverLicenseResponse = detranDriverLicenseService.getDriverLicenseStatusByCnhNumber(request.getCnhNumber());
+
+        if (detranDriverLicenseResponse.getStatus() != DetranDriverLicenseStatus.REGULAR) {
+            throw new IllegalArgumentException("exception.illegal.argument.cnh.irregular");
+        }
+
         return repository.saveBooking(request);
     }
 

@@ -1,10 +1,8 @@
 package br.com.saga.orchestration.controller;
 
 import br.com.saga.orchestration.controller.metric.LogExecutionTime;
-import br.com.saga.orchestration.dto.DetranDriverLicenseResponseDTO;
 import br.com.saga.orchestration.dto.RentalCompanyBookingRequestDTO;
 import br.com.saga.orchestration.dto.RentalCompanyBookingResponseDTO;
-import br.com.saga.orchestration.service.DetranDriverLicenseService;
 import br.com.saga.orchestration.service.RentalCompanyBookingService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -24,8 +22,6 @@ import java.util.List;
 @Slf4j
 public class RentalCompanyBookingController {
     private final RentalCompanyBookingService rentalCompanyBookingService;
-
-    private final DetranDriverLicenseService detranDriverLicenseService;
 
     @LogExecutionTime
     @Operation(summary = "Get all booking")
@@ -59,8 +55,6 @@ public class RentalCompanyBookingController {
     @Operation(summary = "Create a booking")
     @PostMapping
     public ResponseEntity<RentalCompanyBookingResponseDTO> saveBooking(@RequestBody final RentalCompanyBookingRequestDTO request) {
-        final DetranDriverLicenseResponseDTO detranDriverLicenseResponse = detranDriverLicenseService.getDriverLicenseStatusByCnhNumber(request.getCnhNumber());
-
         final RentalCompanyBookingResponseDTO rentalCompanyBookingResponse = rentalCompanyBookingService.saveBooking(request);
 
         return ResponseEntity.ok(rentalCompanyBookingResponse);
