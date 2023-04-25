@@ -46,6 +46,7 @@ public class RentalCompanyContractService {
             securityCompanyContractService.saveContract(securityCompanyContractRequest);
         } catch (Exception e) {
             repository.cancelContractById(rentalCompanyContractResponse.getId());
+            throw new Error(e);
         }
 
         return rentalCompanyContractResponse;

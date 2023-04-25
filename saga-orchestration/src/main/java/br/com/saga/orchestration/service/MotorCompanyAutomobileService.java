@@ -17,12 +17,12 @@ import java.util.List;
 public class MotorCompanyAutomobileService {
     private final MotorCompanyAutomobileRepository repository;
 
-    @Cacheable(cacheNames = CacheTimeDuration.WEEK, key="'MotorCompanyAutomobileService_' + #root.method.name")
+    @Cacheable(value = CacheTimeDuration.WEEK, key="#root.targetClass + '_' + #root.method.name")
     public List<MotorCompanyAutomobileResponseDTO> getAllAutomobile() {
         return repository.getAllAutomobile();
     }
 
-    @Cacheable(cacheNames = CacheTimeDuration.WEEK, key="'MotorCompanyAutomobileService_' + #root.method.name + '_' + #id")
+    @Cacheable(value = CacheTimeDuration.WEEK, key="#root.targetClass + '_' + #root.method.name + '_' + #id")
     public MotorCompanyAutomobileDetailResponseDTO findDetailByAutomobileId(Integer id) {
         return repository.findDetailByAutomobileId(id);
     }

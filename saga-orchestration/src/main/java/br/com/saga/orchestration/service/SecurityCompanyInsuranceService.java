@@ -17,12 +17,12 @@ import java.util.List;
 public class SecurityCompanyInsuranceService {
     private final SecurityCompanyInsuranceRepository repository;
 
-    @Cacheable(cacheNames = CacheTimeDuration.DAY, key="'SecurityCompanyInsuranceService_' + #root.method.name")
+    @Cacheable(value = CacheTimeDuration.DAY, key="#root.targetClass + '_' + #root.method.name")
     public List<SecurityCompanyInsuranceTypeResponseDTO> getAllInsuranceType() {
         return repository.getAllInsuranceType();
     }
 
-    @Cacheable(cacheNames = CacheTimeDuration.DAY, key="'SecurityCompanyInsuranceService_' + #root.method.name + '_' + #id")
+    @Cacheable(value = CacheTimeDuration.DAY, key="#root.targetClass + '_' + #root.method.name + '_' + #id")
     public List<SecurityCompanyInsuranceItemResponseDTO> getInsuranceDetailByTypeId(Integer id) {
         return repository.getInsuranceDetailByTypeId(id);
     }

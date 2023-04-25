@@ -39,7 +39,7 @@ public class RentalCompanySupportService {
         return repository.cancelScheduleById(id);
     }
 
-    @Cacheable(cacheNames = CacheTimeDuration.WEEK, key="'RentalCompanySupportService_' + #root.method.name")
+    @Cacheable(value = CacheTimeDuration.WEEK, key="#root.targetClass + '_' + #root.method.name")
     public List<RentalCompanySupportAddressResponseDTO> getAllAddress() {
         return repository.getAllAddress();
     }

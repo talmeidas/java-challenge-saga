@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class DetranDriverLicenseService {
     private final DetranDriverLicenseRepository repository;
 
-    @Cacheable(cacheNames = CacheTimeDuration.DAY, key="'DetranDriverLicenseService_' + #root.method.name + '_' + #cnhNumber")
+    @Cacheable(value = CacheTimeDuration.DAY, key="#root.targetClass + '_' + #root.method.name + '_' + #cnhNumber")
     public DetranDriverLicenseResponseDTO getDriverLicenseStatusByCnhNumber(String cnhNumber) {
         return repository.getDriverLicenseStatusByCnhNumber(cnhNumber);
     }

@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCust
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
@@ -24,7 +25,7 @@ public class SagaOrchestrationConfiguration {
         return RedisCacheConfiguration.defaultCacheConfig()
                 .disableCachingNullValues()
                 .serializeKeysWith(RedisSerializationContext.SerializationPair.fromSerializer(new StringRedisSerializer()))
-                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new JdkSerializationRedisSerializer()));
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
     }
 
     @Bean
@@ -32,11 +33,11 @@ public class SagaOrchestrationConfiguration {
         return (builder) -> builder
                 .withCacheConfiguration(CacheTimeDuration.WEEK,
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofDays(7)))
-                .withCacheConfiguration(CacheTimeDuration.DAY.toString(),
+                .withCacheConfiguration(CacheTimeDuration.DAY,
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofDays(1)))
-                .withCacheConfiguration(CacheTimeDuration.HOUR.toString(),
+                .withCacheConfiguration(CacheTimeDuration.HOUR,
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofHours(1)))
-                .withCacheConfiguration(CacheTimeDuration.MINUTE.toString(),
+                .withCacheConfiguration(CacheTimeDuration.MINUTE,
                         RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofMinutes(1)));
     }
 }
